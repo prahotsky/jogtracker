@@ -1,15 +1,22 @@
-import React from 'react';
-import logo from './images/bearFace.png';
-import './App.css';
+import React from "react"
+import { BrowserRouter as Router } from "react-router-dom"
+import { ThemeProvider } from "@material-ui/core/styles"
+import { MuiPickersUtilsProvider } from "@material-ui/pickers"
+import DateFnsUtils from "@date-io/date-fns"
+import theme from "../src/theme"
+import Main from "./layouts/Main"
+import "./App.css"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
-  );
+    <Router>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <ThemeProvider theme={theme}>
+          <Main></Main>
+        </ThemeProvider>
+      </MuiPickersUtilsProvider>
+    </Router>
+  )
 }
 
-export default App;
+export default App
