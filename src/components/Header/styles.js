@@ -1,9 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles"
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(({ colors, ...theme }) => ({
   header: {
     boxShadow: "unset",
-    background: theme.colors.appleGreen,
+    background: colors.appleGreen,
     height: "77pt"
   },
   toolbar: {
@@ -15,10 +15,18 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     "& svg": {
       fontSize: 40
+    },
+    [theme.breakpoints.up("sm")]: {
+      display: "none"
     }
   },
   logoImage: {
     width: "97pt"
+  },
+  desktopMenu: {
+    [theme.breakpoints.down("xs")]: {
+      display: "none"
+    }
   }
 }))
 

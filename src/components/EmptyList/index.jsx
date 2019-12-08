@@ -1,9 +1,9 @@
 import React from "react"
-import sadEmoticon from "../../images/sadEmoticon.png"
-import useStyles from "./styles"
-import CustomButton from "../CustomButton"
-import { TRACK_PATH } from "../../constants/links"
 import { Link } from "react-router-dom"
+import CustomButton from "../CustomButton"
+import sadEmoticon from "../../images/sadEmoticon.png"
+import { TRACK_PATH } from "../../constants/links"
+import useStyles from "./styles"
 
 const StartPage = () => {
   const { pageContainer, sadImage, button, emptyText } = useStyles()

@@ -4,7 +4,7 @@ import CloseIcon from "@material-ui/icons/Close"
 import { Link } from "react-router-dom"
 import { JOGS_PATH } from "../../constants/links"
 import CustomButton from "../../components/CustomButton"
-import FormInput from "../../components/FormInput"
+import NumberInput from "../../components/NumberInput"
 import CustomDatePicker from "../../components/CustomDatePicker"
 
 const JogForm = () => {
@@ -24,8 +24,8 @@ const JogForm = () => {
           <CloseIcon className={closeIcon}></CloseIcon>
         </Link>
         <form className={jogForm}>
-          <FormInput label="Distance"></FormInput>
-          <FormInput className={formInput} label="Time"></FormInput>
+          <NumberInput label="Distance"></NumberInput>
+          <NumberInput className={formInput} label="Time"></NumberInput>
 
           <CustomDatePicker
             className={formInput}

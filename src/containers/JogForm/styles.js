@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles"
 
-const useStyles = makeStyles(({ fonts, colors }) => ({
+const useStyles = makeStyles(({ fonts, colors, ...theme }) => ({
   pageContainer: {
     display: "flex",
     flexDirection: "column",
@@ -12,7 +12,9 @@ const useStyles = makeStyles(({ fonts, colors }) => ({
     position: "relative",
     marginTop: "85px",
     height: "380px",
-    width: "310px",
+    minWidth: "310px",
+    maxWidth: "503px",
+    width: "80%",
     background: colors.appleGreen,
     borderRadius: "29px",
     display: "flex",
@@ -24,7 +26,8 @@ const useStyles = makeStyles(({ fonts, colors }) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    width: "236px"
+    width: "75%",
+    maxWidth: "325px"
   },
   closeIcon: {
     position: "absolute",

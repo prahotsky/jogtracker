@@ -11,11 +11,11 @@ const useStyles = makeStyles(({ fonts, colors, ...theme }) => ({
       alignItems: "center"
     }
   },
-  datepicker: {
+  input: {
     height: "31px",
     background: "white",
     marginTop: "6px",
-    borderRadius: "6px",
+    borderRadius: "5px",
     "&>div": {
       height: "31px"
     },

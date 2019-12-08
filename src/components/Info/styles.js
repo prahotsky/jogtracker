@@ -4,7 +4,9 @@ const useStyles = makeStyles(({ colors, fonts }) => ({
   pageContainer: {
     height: "100%",
     overflow: "hidden",
-    margin: "0 25px 0 25px"
+    padding: "0 25px",
+    margin: "0 auto",
+    maxWidth: "614px"
   },
   title: {
     color: colors.appleGreen,
