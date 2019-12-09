@@ -1,20 +1,23 @@
 import React from "react"
+import { connect } from "react-redux"
+import { Link } from "react-router-dom"
+import CustomButton from "../CustomButton"
+import { authenticateUser } from "../../store/actions/auth"
 import bearFace from "../../images/bearFace.png"
 import useStyles from "./styles"
-import CustomButton from "../CustomButton"
-import { JOGS_PATH } from "../../constants/links"
-import { Link } from "react-router-dom"
 
-const StartPage = () => {
+const StartPage = ({ authenticateUser }) => {
   const { pageContainer, bearImage, button } = useStyles()
   return (
     <div className={pageContainer}>
       <img className={bearImage} src={bearFace} alt="bear face"></img>
-      <Link className={button} to={JOGS_PATH}>
+      <Link className={button} onClick={authenticateUser} to={"/"}>
         <CustomButton>Let me in</CustomButton>
       </Link>
     </div>
   )
 }
 
-export default StartPage
+export default connect(null, {
+  authenticateUser
+})(StartPage)

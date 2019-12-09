@@ -1,0 +1,5 @@
+export const BASE_URL = "https://jogtracker.herokuapp.com/api/v1/data"
+export const ADD_JOG = "ADD_JOG"
+export const ADD_JOG_ERROR = "ADD_JOG_ERROR"
+export const GET_JOGS = "GET_JOGS"
+export const GET_JOGS_ERROR = "GET_JOGS_ERROR"

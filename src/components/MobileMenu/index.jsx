@@ -4,7 +4,7 @@ import CloseIcon from "@material-ui/icons/Close"
 import IconButton from "@material-ui/core/IconButton"
 import greenLogo from "../../images/greenLogo.png"
 import { NavLink } from "react-router-dom"
-import { menuRoutes } from "../../constants/menuRoutes"
+import { menuRoutes } from "../../routes/menuRoutes"
 
 const MobileMenu = ({ setDrawer }) => {
   const {

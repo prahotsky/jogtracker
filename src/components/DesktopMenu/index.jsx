@@ -1,7 +1,7 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
 import useStyles from "./styles"
-import { menuRoutes } from "../../constants/menuRoutes"
+import { menuRoutes } from "../../routes/menuRoutes"
 
 const DesktopMenu = ({ className }) => {
   const { link, activeLink } = useStyles()

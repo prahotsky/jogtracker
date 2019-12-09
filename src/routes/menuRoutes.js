@@ -1,4 +1,4 @@
-import { JOGS_PATH, INFO_PATH, ABOUT_US_PATH } from "./links"
+import { JOGS_PATH, INFO_PATH, ABOUT_US_PATH } from "../constants/links"
 
 export const menuRoutes = [
   { name: "JOGS", path: JOGS_PATH },

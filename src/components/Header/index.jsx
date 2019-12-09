@@ -11,7 +11,7 @@ import logo from "../../images/logo.png"
 import DesktopMenu from "../DesktopMenu"
 import MobileMenu from "../MobileMenu"
 
-const Header = () => {
+const Header = ({ isLogged }) => {
   const { header, toolbar, logoImage, menuButton, desktopMenu } = useStyles()
 
   const [drawer, setDrawer] = useState(false)
@@ -20,15 +20,17 @@ const Header = () => {
     <AppBar className={header} position="static">
       <Toolbar className={toolbar}>
         <img src={logo} alt="logo" className={logoImage} />
-        <DesktopMenu className={desktopMenu}></DesktopMenu>
-        <IconButton
-          onClick={() => setDrawer(true)}
-          edge="end"
-          className={menuButton}
-          color="inherit"
-        >
-          <MenuIcon />
-        </IconButton>
+        {isLogged && <DesktopMenu className={desktopMenu}></DesktopMenu>}
+        {isLogged && (
+          <IconButton
+            onClick={() => setDrawer(true)}
+            edge="end"
+            className={menuButton}
+            color="inherit"
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
       </Toolbar>
       <Drawer
         transitionDuration={100}

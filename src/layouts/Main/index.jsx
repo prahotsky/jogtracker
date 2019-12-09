@@ -1,10 +1,9 @@
 import React from "react"
+import { connect } from "react-redux"
+import { Switch, Route } from "react-router-dom"
 import routes from "../../routes"
 import Header from "../../components/Header"
-
 import { makeStyles } from "@material-ui/core/styles"
-
-import { Switch, Route } from "react-router-dom"
 
 const useStyles = makeStyles(() => ({
   mainLayout: {
@@ -17,21 +16,40 @@ const useStyles = makeStyles(() => ({
   }
 }))
 
-const Main = () => {
+const Main = ({ isLogged }) => {
   const { mainLayout, view } = useStyles()
 
   return (
     <div className={mainLayout}>
-      <Header></Header>
+      <Header isLogged={isLogged}></Header>
       <main className={view}>
-        <Switch>
-          {routes.map((route, index) => (
-            <Route key={index} {...route}></Route>
-          ))}
-        </Switch>
+        {isLogged ? (
+          <Switch>
+            {routes
+              .filter((route) => route.private === true)
+              .map((route, index) => (
+                <Route key={index} {...route}></Route>
+              ))}
+          </Switch>
+        ) : (
+          <>
+            <Switch>
+              {routes
+                .filter((route) => route.private === false)
+                .map((route, index) => (
+                  <Route key={index} {...route}></Route>
+                ))}
+            </Switch>
+          </>
+        )}
       </main>
     </div>
   )
 }
 
-export default Main
+export default connect(
+  ({ user }) => ({
+    isLogged: user.isLogged
+  }),
+  {}
+)(Main)
