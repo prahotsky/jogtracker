@@ -10,12 +10,14 @@ import {
   INFO_PATH,
   JOGS_PATH,
   TRACK_PATH,
-  INVALID_PATH
+  INVALID_PATH,
+  ABOUT_US_PATH
 } from "../constants/links"
 
 const routes = [
   { path: ROOT_PATH, component: StartPage, exact: true, private: false },
   { path: INFO_PATH, component: Info, private: true },
+  { path: ABOUT_US_PATH, component: Info, private: true },
   { path: JOGS_PATH, component: JogsList, private: true },
   { path: TRACK_PATH, component: JogForm, private: true },
   {

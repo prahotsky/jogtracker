@@ -1,11 +1,13 @@
 import React from "react"
 import { Link } from "react-router-dom"
+
+import { TRACK_PATH } from "../../constants/links"
+
 import CustomButton from "../CustomButton"
 import sadEmoticon from "../../images/sadEmoticon.png"
-import { TRACK_PATH } from "../../constants/links"
 import useStyles from "./styles"
 
-const StartPage = () => {
+const EmptyList = () => {
   const { pageContainer, sadImage, button, emptyText } = useStyles()
   return (
     <div className={pageContainer}>
@@ -18,4 +20,4 @@ const StartPage = () => {
   )
 }
 
-export default StartPage
+export default EmptyList

@@ -1,55 +1,29 @@
 import React from "react"
 import { connect } from "react-redux"
-import { Switch, Route } from "react-router-dom"
-import routes from "../../routes"
-import Header from "../../components/Header"
-import { makeStyles } from "@material-ui/core/styles"
+import PropTypes from "prop-types"
 
-const useStyles = makeStyles(() => ({
-  mainLayout: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column"
-  },
-  view: {
-    flex: 1
-  }
-}))
+import Header from "../../components/Header"
+import View from "../../containers/View"
+import useStyles from "./styles"
 
 const Main = ({ isLogged }) => {
-  const { mainLayout, view } = useStyles()
-
+  const { mainLayout } = useStyles()
   return (
     <div className={mainLayout}>
       <Header isLogged={isLogged}></Header>
-      <main className={view}>
-        {isLogged ? (
-          <Switch>
-            {routes
-              .filter((route) => route.private === true)
-              .map((route, index) => (
-                <Route key={index} {...route}></Route>
-              ))}
-          </Switch>
-        ) : (
-          <>
-            <Switch>
-              {routes
-                .filter((route) => route.private === false)
-                .map((route, index) => (
-                  <Route key={index} {...route}></Route>
-                ))}
-            </Switch>
-          </>
-        )}
-      </main>
+      <View isLogged={isLogged}></View>
     </div>
   )
 }
 
+Main.propTypes = {
+  isLogged: PropTypes.bool
+}
+
 export default connect(
-  ({ user }) => ({
-    isLogged: user.isLogged
+  ({ user, isLoading }) => ({
+    isLogged: user.isLogged,
+    isLoading: isLoading
   }),
   {}
 )(Main)

@@ -1,7 +1,10 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
-import useStyles from "./styles"
+import PropTypes from "prop-types"
+
 import { menuRoutes } from "../../routes/menuRoutes"
+
+import useStyles from "./styles"
 
 const DesktopMenu = ({ className }) => {
   const { link, activeLink } = useStyles()
@@ -19,6 +22,10 @@ const DesktopMenu = ({ className }) => {
       ))}
     </div>
   )
+}
+
+DesktopMenu.propTypes = {
+  className: PropTypes.string
 }
 
 export default DesktopMenu

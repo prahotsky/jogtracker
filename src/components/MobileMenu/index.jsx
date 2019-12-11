@@ -1,10 +1,14 @@
 import React from "react"
-import useStyles from "./styles"
+import { NavLink } from "react-router-dom"
+import PropTypes from "prop-types"
+
+import { menuRoutes } from "../../routes/menuRoutes"
+
 import CloseIcon from "@material-ui/icons/Close"
 import IconButton from "@material-ui/core/IconButton"
+
+import useStyles from "./styles"
 import greenLogo from "../../images/greenLogo.png"
-import { NavLink } from "react-router-dom"
-import { menuRoutes } from "../../routes/menuRoutes"
 
 const MobileMenu = ({ setDrawer }) => {
   const {
@@ -15,7 +19,6 @@ const MobileMenu = ({ setDrawer }) => {
     menuItemsContainer,
     activeLink
   } = useStyles()
-
   return (
     <div className={menuContainer}>
       <img src={greenLogo} alt="logo" className={logoImage} />
@@ -36,6 +39,10 @@ const MobileMenu = ({ setDrawer }) => {
       </nav>
     </div>
   )
+}
+
+MobileMenu.propTypes = {
+  setDrawer: PropTypes.func.isRequired
 }
 
 export default MobileMenu

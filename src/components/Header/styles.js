@@ -27,6 +27,22 @@ const useStyles = makeStyles(({ colors, ...theme }) => ({
     [theme.breakpoints.down("xs")]: {
       display: "none"
     }
+  },
+  filterImage: {
+    marginRight: "20px",
+    "& img": {
+      width: "26px"
+    }
+  },
+  filterImageActive: {
+    marginRight: "15px",
+    "& img": {
+      width: "36px"
+    }
+  },
+  navContainer: {
+    display: "flex",
+    alignItems: "center"
   }
 }))
 
