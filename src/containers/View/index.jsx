@@ -19,15 +19,13 @@ const View = ({ isLogged }) => {
             ))}
         </Switch>
       ) : (
-        <>
-          <Switch>
-            {routes
-              .filter((route) => route.private === false)
-              .map((route, index) => (
-                <Route key={index} {...route}></Route>
-              ))}
-          </Switch>
-        </>
+        <Switch>
+          {routes
+            .filter((route) => route.private === false)
+            .map((route, index) => (
+              <Route key={index} {...route}></Route>
+            ))}
+        </Switch>
       )}
     </main>
   )

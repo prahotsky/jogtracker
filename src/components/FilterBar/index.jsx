@@ -4,17 +4,11 @@ import PropTypes from "prop-types"
 import useStyles from "./styles"
 import CustomDatePicker from "../CustomDatePicker"
 
-const FilterBar = ({
-  filterMenuOpen,
-  startDate,
-  setStartDate,
-  endDate,
-  setEndDate
-}) => {
-  const { barContainer, datePickerContainer, invisible } = useStyles()
+const FilterBar = ({ startDate, setStartDate, endDate, setEndDate }) => {
+  const { barContainer, datePickerContainer } = useStyles()
 
   return (
-    <div className={filterMenuOpen ? barContainer : invisible}>
+    <div className={barContainer}>
       <CustomDatePicker
         value={startDate}
         onChange={(e) => setStartDate(e)}
@@ -36,7 +30,10 @@ const FilterBar = ({
 }
 
 FilterBar.propTypes = {
-  filterMenuOpen: PropTypes.bool.isRequired
+  startDate: PropTypes.oneOfType([PropTypes.instanceOf(Date)]),
+  endDate: PropTypes.oneOfType([PropTypes.instanceOf(Date)]),
+  setStartDate: PropTypes.func.isRequired,
+  setEndDate: PropTypes.func.isRequired
 }
 
 export default FilterBar

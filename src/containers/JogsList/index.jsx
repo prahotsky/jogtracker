@@ -36,7 +36,13 @@ const JogsList = ({ getJogs, jogs, startDate, endDate }) => {
     <>
       {filteredJogs.length ? (
         filteredJogs.map(({ date, distance, time, id }) => (
-          <Jog key={id} date={date} distance={distance} time={time}></Jog>
+          <Jog
+            key={id}
+            date={date}
+            distance={distance}
+            time={time}
+            id={id}
+          ></Jog>
         ))
       ) : (
         <EmptyList></EmptyList>
@@ -60,11 +66,11 @@ JogsList.propTypes = {
 }
 
 export default connect(
-  ({ jogs, isLoading, filters }) => ({
-    jogs: jogs,
-    isLoading: isLoading,
-    startDate: filters.startDate,
-    endDate: filters.endDate
+  ({ jogs }) => ({
+    jogs: jogs.instances,
+    isLoading: jogs.loading,
+    startDate: jogs.filters.startDate,
+    endDate: jogs.filters.endDate
   }),
   { getJogs }
 )(withSpinner(JogsList, "jogs"))

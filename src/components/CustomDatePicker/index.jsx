@@ -7,6 +7,7 @@ import useStyles from "./styles"
 
 const CustomDatePicker = ({ label, className, ...props }) => {
   const { inputContainer, datepicker } = useStyles()
+
   return (
     <div className={`${inputContainer} ${className}`}>
       <label>{label}</label>

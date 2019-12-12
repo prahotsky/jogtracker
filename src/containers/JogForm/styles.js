@@ -6,7 +6,6 @@ const useStyles = makeStyles(({ fonts, colors, ...theme }) => ({
     flexDirection: "column",
     height: "100%",
     alignItems: "center"
-    // justifyContent: "center"
   },
   formContainer: {
     position: "relative",

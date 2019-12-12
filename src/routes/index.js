@@ -11,7 +11,8 @@ import {
   JOGS_PATH,
   TRACK_PATH,
   INVALID_PATH,
-  ABOUT_US_PATH
+  ABOUT_US_PATH,
+  UPDATE_JOG_PATH_ID
 } from "../constants/links"
 
 const routes = [
@@ -20,6 +21,7 @@ const routes = [
   { path: ABOUT_US_PATH, component: Info, private: true },
   { path: JOGS_PATH, component: JogsList, private: true },
   { path: TRACK_PATH, component: JogForm, private: true },
+  { path: UPDATE_JOG_PATH_ID, component: JogForm, private: true },
   {
     path: INVALID_PATH,
     render: () => <Redirect to={{ pathname: ROOT_PATH }} />,

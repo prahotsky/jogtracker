@@ -1,20 +1,22 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
+import parse from "date-fns/parse"
 
 import CloseIcon from "@material-ui/icons/Close"
 
-import { addJog } from "../../store/actions/jogs"
+import { addJog, getJogs, updateJog } from "../../store/actions/jogs"
 import useJogForm from "./FormHook"
 import { JOGS_PATH } from "../../constants/links"
+import withSpinner from "../WithSpinner"
 
 import CustomButton from "../../components/CustomButton"
 import NumberInput from "../../components/NumberInput"
 import CustomDatePicker from "../../components/CustomDatePicker"
 import useStyles from "./styles"
 
-const JogForm = ({ addJog }) => {
+const JogForm = ({ addJog, match, instances, getJogs, updateJog }) => {
   const {
     pageContainer,
     jogForm,
@@ -24,7 +26,28 @@ const JogForm = ({ addJog }) => {
     saveButton
   } = useStyles()
 
-  const { inputs, handleInputChange, handleSubmit } = useJogForm(addJog)
+  const [localInstance, setLocalInstance] = useState({})
+
+  useEffect(() => {
+    if (!instances.length) {
+      getJogs()
+    } else {
+      let instance = instances.find((el) => el.id === parseInt(match.params.id))
+      setLocalInstance(
+        instance
+          ? {
+              ...instance,
+              date: parse(instance.date, "dd.MM.yyyy", new Date())
+            }
+          : {}
+      )
+    }
+  }, [instances, getJogs, match.params.id])
+
+  const { inputs, handleInputChange, handleSubmit } = useJogForm(
+    localInstance,
+    match.params.id ? updateJog : addJog
+  )
 
   return (
     <div className={pageContainer}>
@@ -67,7 +90,17 @@ const JogForm = ({ addJog }) => {
 }
 
 JogForm.propTypes = {
-  addJog: PropTypes.func.isRequired
+  addJog: PropTypes.func.isRequired,
+  match: PropTypes.object,
+  instances: PropTypes.array,
+  getJogs: PropTypes.func,
+  updateJog: PropTypes.func
 }
 
-export default connect(null, { addJog })(JogForm)
+export default connect(
+  ({ jogs }) => ({
+    instances: jogs.instances,
+    isLoading: jogs.loading
+  }),
+  { addJog, getJogs, updateJog }
+)(withSpinner(JogForm, "instances"))

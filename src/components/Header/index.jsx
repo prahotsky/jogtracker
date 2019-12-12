@@ -38,6 +38,11 @@ const Header = ({ isLogged, setStart, setEnd, location }) => {
     setEnd(endDate)
   }, [endDate, setEnd])
 
+  useEffect(() => {
+    setStartDate(null)
+    setEndDate(null)
+  }, [filterMenuOpen])
+
   const {
     header,
     toolbar,
@@ -83,13 +88,14 @@ const Header = ({ isLogged, setStart, setEnd, location }) => {
           <MobileMenu setDrawer={setDrawer}></MobileMenu>
         </Drawer>
       </AppBar>
-      <FilterBar
-        startDate={startDate}
-        setStartDate={setStartDate}
-        endDate={endDate}
-        setEndDate={setEndDate}
-        filterMenuOpen={isJogList && filterMenuOpen}
-      ></FilterBar>
+      {isJogList && filterMenuOpen && (
+        <FilterBar
+          startDate={startDate}
+          setStartDate={setStartDate}
+          endDate={endDate}
+          setEndDate={setEndDate}
+        ></FilterBar>
+      )}
     </>
   )
 }

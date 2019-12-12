@@ -1,6 +1,10 @@
 import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(({ colors, fonts, ...theme }) => ({
+  jogLink: {
+    textDecoration: "none",
+    color: "inherit"
+  },
   jogContainer: {
     display: "flex",
     height: "187px",
@@ -10,6 +14,7 @@ const useStyles = makeStyles(({ colors, fonts, ...theme }) => ({
     justifyContent: "center",
     alignItems: "center",
     margin: "auto",
+    cursor: "pointer",
     [theme.breakpoints.up("sm")]: {
       borderBottom: "unset"
     }
