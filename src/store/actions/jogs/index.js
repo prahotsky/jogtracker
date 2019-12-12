@@ -35,7 +35,7 @@ export const updateJog = (jog) => (dispatch) => {
       path: "/data/jog"
     }
   })
-  // dispatch({
-  //   type: CLEAR_JOGS
-  // })
+  dispatch({
+    type: CLEAR_JOGS
+  })
 }

@@ -26,3 +26,10 @@ export const filterByDate = (arr, startDate, endDate) => {
     return result
   })
 }
+
+export const updateJogInArray = (array, jog) => {
+  const index = array.indexOf((el) => el.id === jog.id)
+  const newArr = array.slice(0)
+  newArr[index] = jog
+  return newArr
+}

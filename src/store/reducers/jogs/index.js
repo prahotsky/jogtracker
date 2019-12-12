@@ -1,12 +1,15 @@
+import format from "date-fns/format"
 import {
   GET_JOGS_SUCCESS,
   GET_JOGS_ERROR,
-  CLEAR_JOGS
+  CLEAR_JOGS,
+  ADD_JOG_SUCCESS,
+  UPDATE_JOG_SUCCESS
 } from "../../constants/jogs"
 import { START_LOADING, STOP_LOADING } from "../../constants/loading"
 import { SET_START_DATE, SET_END_DATE } from "../../constants/filters"
+import { updateJogInArray } from "../../../utils"
 
-import format from "date-fns/format"
 const initialState = {
   instances: [],
   loading: 0,
@@ -31,6 +34,16 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         loginError: payload
+      }
+    case ADD_JOG_SUCCESS:
+      return {
+        ...state,
+        instances: [...state.instances, payload.data.response]
+      }
+    case UPDATE_JOG_SUCCESS:
+      return {
+        ...state,
+        instances: updateJogInArray(state.instances, payload.data.response)
       }
     case CLEAR_JOGS:
       return { ...state, instances: [] }
