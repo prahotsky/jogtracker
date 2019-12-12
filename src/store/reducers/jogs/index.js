@@ -38,7 +38,13 @@ export default (state = initialState, { type, payload }) => {
     case ADD_JOG_SUCCESS:
       return {
         ...state,
-        instances: [...state.instances, payload.data.response]
+        instances: [
+          {
+            ...payload.data.response,
+            date: format(new Date(payload.data.response.date), "dd.MM.yyyy")
+          },
+          ...state.instances
+        ]
       }
     case UPDATE_JOG_SUCCESS:
       return {
